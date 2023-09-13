@@ -11,7 +11,6 @@ export class TestSuite{
         this.defaultPropertyName = "enabled"
         this.defaultSessionStorageItemName = this.defaultTestSuiteToolsName + "_" + this.defaultPropertyName;
         this.divIdName = this.InstanceName + "_div";
-        
 
     }
 
