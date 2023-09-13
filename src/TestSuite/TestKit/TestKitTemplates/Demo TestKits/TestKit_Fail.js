@@ -49,9 +49,6 @@ export function postTestCallback(testScenario){
 
 
 
-
-
-
 //OPTIONAL ADDITIONAL CUSTOM TEST FUNCTION for getting HTML values on the page.
 function testFunction_CheckHTMLValues(){
   let av = document.getElementById("average").innerHTML;

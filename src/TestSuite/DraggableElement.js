@@ -13,11 +13,8 @@ export class DraggableElement{
       //psuedoWindow.style.backgroundColor = "lightgrey";
       //ancestor.style.zIndex = 2;
       //psuedoWindow.style.zIndex = -1;
-
       //document.body.append(psuedoWindow);
 
-
-        
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, x=0,y=0;
         if (document.getElementById(draggee)) {
           // if present, the header is where you move the DIV from:
@@ -51,41 +48,17 @@ export class DraggableElement{
           y = (dragger.offsetTop - pos2);
           var draggeeElementHeightAdjustedY = (y - (window.innerHeight) );
           
-            
-                dragger.style.top = y + "px";
-                draggee.style.top = (y + 40) +"px";
-                draggee.style.height = "auto";
-                
-                
-                //draggee.style.bottom = "0px";
-                
-                
-                //draggee.style.height = (window.innerHeight - y) + "px";
-                
-                //draggee.style.height = (window.innerHeight - y) + "px";
-                //draggee.style.height = "content";
-                
-                
-            }
-          
-         // dragger.style.left = x + "px";
-          
-        
-      
+          dragger.style.top = y + "px";
+          draggee.style.top = (y + 40) +"px";
+          draggee.style.height = "auto";  
+
+        }
+
         function closeDragElement() {
-          
-            //psuedoWindow.remove();
-            //draggee.style.top = 380 +"px";
-            //draggee.style.height = 50 + "px";
-          
           // stop moving when mouse button is released:
           document.onmouseup = null;
           document.onmousemove = null;
           var currentPosition = Math.abs(y);
-          
-          
-          console.log(Math.abs(y));
-          console.log(minHeight);
          
           if( currentPosition < minHeight){
             dragger.style.top = -50 + "px";
@@ -104,12 +77,7 @@ export class DraggableElement{
           } else if (currentPosition > midHeight && currentPosition < midmaxHeight){
             dragger.style.top = -midHeight + "px";
             draggee.style.top = -midHeight + 50 + "px";
-          } 
-          
-          
-          
-         
-          
+          }  
         }
       }
 }

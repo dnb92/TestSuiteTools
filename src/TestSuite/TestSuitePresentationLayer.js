@@ -3,7 +3,9 @@ import { TestSuite } from "./TestSuite.js";
 import { TestSuitePropertiesEventHandlers } from "./TestSuitePropertiesEventHandlers.js";
 import {DraggableElement} from "./DraggableElement.js";
 
-
+//This file is all the visual elements for the program, i have kept them all in one file because they will be condensed 
+//into templates with the use of ElementGroups and ElementUnits in a future revision, these classes will allow me to
+//go through this document sequentiallty and make templates out of all these element commands. 
 
 export class TestSuitePresentationLayer{
     constructor(defaults){
@@ -14,8 +16,6 @@ export class TestSuitePresentationLayer{
         this.scrollWindowElement;
         this.clickCount = 0;
         this.TestKits = [];
-        
-        
     }
 
     AddTestSuite(presentationLayer, testSuiteName, testBedName){
@@ -23,7 +23,6 @@ export class TestSuitePresentationLayer{
         this.Data = testSuite;
         this.mainWindowId = this.Data.divIdName;
     }
-
 
     #assignEventsToProperties(testSuiteProperties,eventHandlers,parentNameForAllCustomEvents,i,max){
         var eventhandlers = eventHandlers;
@@ -79,11 +78,11 @@ export class TestSuitePresentationLayer{
                     }else{
                         return Error("NO_EVENT_HANDLER_FOUND_WITH_MATCHING_PROPERTY_NAME");
                     }
-                }
-                    
+                }    
             }
         }
     }
+
     #assignEventsToPropertiesOnObject(testSuiteProperties, parentNameForAllCustomEvents){
 
     var eventHandlers = testSuiteProperties.tspEventHandlers;
@@ -149,14 +148,10 @@ export class TestSuitePresentationLayer{
             
         };
 
-
         tspEventHandlers.AddNewTstEventHandler(testSuiteToolsEventHandler,this.Defaults.defaultPropertyName);
 
         this.#assignEventsToPropertiesOnObject(tspEventHandlers,this.Defaults.defaultTestSuiteToolsName);
 
-        
-        
-        
         }
     }
 
@@ -265,12 +260,6 @@ export class TestSuitePresentationLayer{
 
             }.bind(this);
 
-            
-
-            
-
-            
-            
             var welcome = document.createElement('p');
             welcome.style.fontFamily = "Helvetica";
             welcome.id = "headingMessage";
@@ -284,10 +273,7 @@ export class TestSuitePresentationLayer{
             welcome.style.fontSize = "50px"
             welcome.style.width = "100%";
             welcome.style.borderRadius = "50px";
-            //welcome.style.padding = "20px";
-            welcome.style.marginBottom = "10px";
-           
-                                
+            welcome.style.marginBottom = "10px";           
             welcome.innerHTML = "<sup><b>WELCOME\n\nto TestSuite Webpage Unit-Testing Software. _version_0.01beta</sup>";
 
             var testBedDiv = document.createElement("div");
@@ -300,7 +286,6 @@ export class TestSuitePresentationLayer{
             testBedDiv.style.borderRadius = "10px";
             testBedDiv.style.padding = "20px";
             testBedDiv.style.pointerEvents = "auto";
-        
             testBedDiv.style.height = "content";
             testBedDiv.style.marginTop = "10px";
             testBedDiv.style.backgroundColor = "white";
@@ -315,12 +300,6 @@ export class TestSuitePresentationLayer{
             testBedDiv.style.borderStyle = "dashed";
             testBedDiv.style.borderColor = "black";
             
-
-
-
-
-
-
             var testBedHeader = document.createElement("div");
             testBedHeader.style.margin = "0px";
             testBedHeader.style.fontFamily = "Helvetica";
@@ -331,7 +310,6 @@ export class TestSuitePresentationLayer{
             testBedHeader.style.borderRadius = "10px";
             testBedHeader.style.padding = "20px";
             testBedHeader.style.pointerEvents = "auto";
-            
             testBedHeader.style.height = "content";
             testBedHeader.style.marginTop = "0px";
             testBedHeader.style.backgroundColor = "white";
@@ -396,7 +374,6 @@ export class TestSuitePresentationLayer{
             pickerDiv.style.borderStyle = "dashed";
             pickerDiv.style.borderColor = "black";
             
-
             var directions = document.createElement("div");
             directions.style.backgroundColor = "lightgrey"
             directions.style.fontSize = "70%";
@@ -442,18 +419,10 @@ export class TestSuitePresentationLayer{
             }}
             helpHeading.click();
 
-            
-            
-            
-            
-            
-
             var pickTestKit = document.createElement("input");
             pickTestKit.type = "file";
-            //pickTestKit.webkitdirectory = true;
             pickTestKit.marginLeft = "50px";
             pickTestKit.multiple = true;
-            //pickTestKit.webkitRelativePath = true;
             pickTestKit.style.pointerEvents = "auto";
             pickTestKit.id= "testKitPicker";
             pickTestKit.innerHTML = "Choose TestKit:"
@@ -462,8 +431,6 @@ export class TestSuitePresentationLayer{
             button.disabled = true;
             var breakEle = document.createElement('p');
             breakEle.innerHTML = "<br><br>";
-            //pickerDiv.append(breakEle);
-            
 
             var functionToCall = function (obj = 1,fileUrl,testKit){
             
@@ -479,8 +446,6 @@ export class TestSuitePresentationLayer{
                             this.mainWindowOpenCloseButtonElement.style.backgroundColor= "white";
                             button.disabled = false;
 
-                            
-                            
                             var tkdispdiv = document.createElement('div');
                             tkdispdiv.id = `tkEntry_${ts.Name}`;
                             tkdispdiv.style.display = "flex";
@@ -652,13 +617,10 @@ export class TestSuitePresentationLayer{
                                             
                                         }
                         
-                                        
                                         button.disabled = false;
-                                        
                                     
                                     });
                                 }
-                                
                             };
                             
                             testKitDisplay.onclick = function(e) {
@@ -697,20 +659,11 @@ export class TestSuitePresentationLayer{
                             var tkindex = obj.TestKits.findIndex(function (file){ return file.name == testKit.name});
                             obj.TestKits.splice(tkindex, 1);
                         }
-                        
-
-                        
-                        
-
                 });
 
-                
-            
         }.bind(this);
                 
             
-
-
             pickTestKit.addEventListener('change', (testKits) => {
                 var Files = testKits;
                 if (this.Data == null){
@@ -742,29 +695,20 @@ export class TestSuitePresentationLayer{
                         alert("TestKit Already in TestBed please use another TestKit and try again!");
                     }
                     
-                }
-
-                
-                button.disabled = false;
-                
-            
+                } 
+            button.disabled = false;
             });
+
             testBedDiv.append(testBedHeader);
             testBedDiv.append(pickerDiv);
             testBedDiv.append(helpHeading);
             testBedDiv.append(directions);
             testBedDiv.append(button);
             testBedDiv.append(clearButton);
-
             pickerHeader.append(pickTestKit);
             pickerDiv.append(pickerHeader);
-            
-            
             this.scrollWindowElement.append(testBedDiv);
             this.scrollWindowElement.append(welcome);
-
-            
-            //button.disabled = true;
             
         }else{
             
@@ -788,23 +732,9 @@ export class TestSuitePresentationLayer{
 
         var openCloseMainWindow = function (){
             DraggableElement.dragElement(this.mainWindowOpenCloseButtonElement,this.scrollWindowElement,ancestor);
-            
-            
-            //run this code on double click
-            /* var getHeight = document.getElementById("scrollWindow").style.height;
-            if(getHeight == "300px"){
-                this.scrollWindowElement.style.height = "40px";
-                this.mainWindowOpenCloseButtonElement.style.bottom = "40px";
-            }else{
-                this.scrollWindowElement.style.height = "300px";
-                this.mainWindowOpenCloseButtonElement.style.bottom = "300px";
-            } */
-            
-
+    
         };
         
-        
-      
         var scrollWindow = document.createElement('div');
         scrollWindow.id = "scrollWindow";
         scrollWindow.style.position = "absolute";
@@ -824,8 +754,6 @@ export class TestSuitePresentationLayer{
         scrollWindow.style.backgroundSize = "contain";
         scrollWindow.style.backgroundBlendMode = "lighten";
         this.scrollWindowElement = scrollWindow;
-        
-        
         
         //CREATE Open Close Button
         var mainWindowOpenClose = document.createElement("div");
@@ -852,7 +780,6 @@ export class TestSuitePresentationLayer{
         mainWindowOpenClose.style.bottom = (window.innerHeight / 2) + "px";
         scrollWindow.style.height = (window.innerHeight / 2) + "px";
 
-        
         ancestor.append(mainWindowOpenClose);
         ancestor.append(scrollWindow);
         document.body.append(ancestor);
@@ -870,8 +797,6 @@ export class TestSuitePresentationLayer{
                     var loading = document.getElementById("headingMessage");
                     loading.innerHTML = "Loading TestBeds...";
 
-                    
-                        
                         var heading = document.createElement("p");
                             
                             heading.style.backgroundColor = "Black";
@@ -904,11 +829,7 @@ export class TestSuitePresentationLayer{
                             
                         this.BuildTestScenarios(heading,containerForTestBed,testScenario);
                             
-                    
-
-                    
                     loading.innerHTML = "Building TestScenarios...";
-            
                 }
 
                 var loading = document.getElementById("headingMessage");
@@ -918,8 +839,6 @@ export class TestSuitePresentationLayer{
                 loading.style.borderColor = "black";
                 loading.style.backgroundColor = "white";
                 loading.style.color = "darkgrey";
-
-            
             }
         
     }
@@ -931,7 +850,6 @@ export class TestSuitePresentationLayer{
         if(testScenario.TestCases.length > 0){
             
             testResults = testScenario.GenerateTestResults().replace(/[,]+/g," ");
-
 
             //testScenario.cloneAndAddListener();
 
@@ -1017,18 +935,12 @@ export class TestSuitePresentationLayer{
             textField.style.borderStyle = "dashed";
             textField.style.borderColor = "black";
             textField.innerHTML = "TEST_CASES:"
-            
+        
             textField.appendChild(testResultPanel);
             testResultsContainer.appendChild(textField);
             
-            
-            
-            
-            
-
-
-                                var heading = document.getElementById("headingMessage");
-                                heading.innerHTML = "Building TestCases...";
+            var heading = document.getElementById("headingMessage");
+            heading.innerHTML = "Building TestCases...";
             //Generate Test Case Presentations
             for (var testCase of testScenario.TestCases){
                 var testCaseElement = document.createElement('div');
@@ -1038,49 +950,42 @@ export class TestSuitePresentationLayer{
                 testCaseElement.style.height = "content";
                 testCaseElement.style.width = "100%";
                 testCaseElement.style.padding = "10px";
-                
                 testCaseElement.style.backgroundColor = "lightgrey";
+
                 this.testCaseElements = [];
                 this.testCaseElements.push(testCaseElement);
-
                 this.BuildTestCases(testResultsContainer, textField, testResultPanel,testCaseElement,testScenario,testCase);
 
-                
-
-                
             }
 
             var heading = document.getElementById("headingMessage");
-                    heading.innerHTML = "Loading User Interface...";
+            heading.innerHTML = "Loading User Interface...";
             
-                    var textField1 = document.createElement('p');
-                    textField1.style.margin = "10px";
-                    textField1.style.height = "content";
-                    textField1.style.fontFamily = "Helvetica";
-                    textField1.style.color = "black";
-                    textField1.style.fontWeight = "bold";
-                    textField1.style.fontSize = "20px"
-                    textField1.style.width = "98.5%";
-                    textField1.style.borderRadius = "10px";
-                    textField1.style.padding = "20px";
-                    //textField1.style.paddingBottom = "630px";
-                    textField1.style.backgroundColor = "white";
-                    textField1.style.backgroundBlendMode = "none";
-                    textField1.style.whiteSpace = "wrap";
-                    textField1.style.textAlign = "left";
-                    textField1.style.position = "relative";
-                    textField1.style.pointerEvents = "auto";
-                    textField1.style.marginBottom = "10px";
+            var textField1 = document.createElement('p');
+            textField1.style.margin = "10px";
+            textField1.style.height = "content";
+            textField1.style.fontFamily = "Helvetica";
+            textField1.style.color = "black";
+            textField1.style.fontWeight = "bold";
+            textField1.style.fontSize = "20px"
+            textField1.style.width = "98.5%";
+            textField1.style.borderRadius = "10px";
+            textField1.style.padding = "20px";
+            textField1.style.backgroundColor = "white";
+            textField1.style.backgroundBlendMode = "none";
+            textField1.style.whiteSpace = "wrap";
+            textField1.style.textAlign = "left";
+            textField1.style.position = "relative";
+            textField1.style.pointerEvents = "auto";
+            textField1.style.marginBottom = "10px";
                     
-                    textField1.style.borderRadius = "20px";
-                    textField1.style.borderWidth = "1px";
-                    textField1.style.borderStyle = "dashed";
-                    textField1.style.borderColor = "black";
-                    textField1.innerHTML = "TEST_OUTPUT:"
-                    testResultsContainer.appendChild(textField1);
+            textField1.style.borderRadius = "20px";
+            textField1.style.borderWidth = "1px";
+            textField1.style.borderStyle = "dashed";
+            textField1.style.borderColor = "black";
+            textField1.innerHTML = "TEST_OUTPUT:"
+            testResultsContainer.appendChild(textField1);
                     
-        
-            
             var textField2 = document.createElement('div');
             textField2.style.pointerEvents = "auto";
             textField2.style.textAlign = "center";
@@ -1108,7 +1013,6 @@ export class TestSuitePresentationLayer{
             var breakLine3 = document.createElement("br");
             var breakLine4 = document.createElement("br");
             
-    
             textField2.appendChild(breakLine);
             textField2.appendChild(breakLine4);
     
@@ -1132,7 +1036,6 @@ export class TestSuitePresentationLayer{
             textField2.appendChild(saveButton);
             textField2.appendChild(breakLine2);
             textField2.appendChild(breakLine3);
-    
     
             //RESET LINK
             var resetButton = document.createElement("button");
@@ -1162,17 +1065,11 @@ export class TestSuitePresentationLayer{
             
         }
 
-            window.sessionStorage.setItem("testBedsRun", true);
+        window.sessionStorage.setItem("testBedsRun", true);
             
-            
-         
-
     }
     BuildTestCases(testResultsContainer, textFieldPanel,testResultsPanel,testCaseElement,testScenario,testCase){
         
-            //testCaseElement.style.overflowY = "scroll";
-            //testBedElement.style.pointerEvents = "none";
-
             //Create Test Case Info:
             var propertyNames = ["TestName","TestType","TestData","TestResult","ExpectedResult","FunctionToTest","ErrorTypeFound","ExpectedErrorType","Time"];
             var testCaseElement = document.createElement('div');
@@ -1209,24 +1106,16 @@ export class TestSuitePresentationLayer{
                                 textField.style.whiteSpace = "wrap";
                             }
                             
-
-                           
                             if (typeof(testCase[property]) == 'function'){
                                 textField.innerHTML = `<b>${property.toUpperCase()}<b> : ${testCase[property].name}`;
                             }else{
                                 textField.innerHTML = `<b>${property.toUpperCase()}<b> : ${testCase[property]}`;
                             }
                             testCaseElement.appendChild(textField);
-            
                         }
                     }
-                    
-                    
-                    
-                }
-                
+                } 
             }
-            
             //PASS FAIL BUTTON
             var passFailButton = document.createElement('div');
             var br= document.createElement('br');
@@ -1238,8 +1127,6 @@ export class TestSuitePresentationLayer{
             passFailButton.style.padding = "30px";
             passFailButton.style.marginTop = "20px";
             passFailButton.style.textAlign = "center";
-            
-            
             passFailButton.style.width = "content";
             passFailButton.style.borderRadius = "15px";
             
@@ -1261,18 +1148,12 @@ export class TestSuitePresentationLayer{
             }
             testCaseElement.style.margin = "20px";
             testCaseElement.style.padding = "20px";
-           
             testCaseElement.style.borderRadius = "20px";
             testCaseElement.style.width = "33.33%";
             
-            
             testCaseElement.appendChild(passFailButton);
-            
             testCaseElement.appendChild(br);
-
             testResultsPanel.appendChild(testCaseElement);
             textFieldPanel.append(testResultsPanel);
-        
-            
     }
 }

@@ -13,7 +13,6 @@ import { TestScenario } from "./TestScenario.js"
 var TestType = getTestType();
 var TestScenarioMode = getTestScenarioMode();
 
-
 //testBed
 export class TestBed{
     constructor(presentationLayer,testBedName){

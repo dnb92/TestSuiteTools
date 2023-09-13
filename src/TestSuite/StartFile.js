@@ -16,13 +16,11 @@ var testSuiteNames;
 var defaults;
 var testSuitePresentationLayer;
 
-
 function createPresentationLayer(){
   testSuiteNames = ["TestSuitePARTIAL","TestBed1"];
   defaults = new Defaults();
   testSuitePresentationLayer = new TestSuitePresentationLayer(defaults);
 }
-
 
 export function RunTestSuiteTools(enabled = true){
     createPresentationLayer();
