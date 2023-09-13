@@ -115,7 +115,6 @@ export class TestScenario {
 
     #AddTestCase(testName, testType, testData, functionToTest = null, expectedResult, expectedError = TypeError) {
         
-        //should be 'testcase' not testscenario - please change later.
         var testCase = new TestCase(this.PresentationLayer, testName, testType, testData, functionToTest, expectedResult, expectedError);
         //check function exists if not use testbed function
         if (testCase.FunctionToTest == null){
@@ -125,7 +124,7 @@ export class TestScenario {
             if (testCase.FunctionToTest != this.FunctionToTest){
                 var typeName = this.#getNameOfFunction(this.FunctionToTest);
                 
-                let error = new Error(`TestScenario: ${testScenario.TestName} is not using same function as TestScenario: ${this.Name}. Expected: ${typeName}`);
+                let error = new Error(`TestScenario: ${testCase.TestName} is not using same function as TestScenario: ${this.Name}. Expected: ${typeName}`);
                 alert(error.message);
                 throw error;
             }
