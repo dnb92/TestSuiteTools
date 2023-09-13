@@ -1,10 +1,4 @@
 import { PresentationLayerElementUnit } from "../PresentationLayerElementUnit.js";
-import { PresentationLayerElementAttribute } from "../PresentationLayerElementAttribute.js";
-import { PresentationLayerElementGroup } from "../PresentationLayerElementGroup.js";
-import { PresentationLayerElementStyle } from "../PresentationLayerElementStyle.js";
-import { PresentationLayerElementUnitDataBinding } from "../PresentationLayerElementUnitDataBinding.js";
-import { PresentationLayerElementUnitState } from "../PresentationLayerElementUnitStateManager.js";
-import { PresentationLayerElementUnitEventHandler } from "../PresentationLayerElementUnitEventHandler.js";
 
 function ElementUnit_UnitTest(){
     var parent = document.createElement("div");
